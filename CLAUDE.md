@@ -62,4 +62,7 @@ release). Then wait for the schedule or run the workflow from the Actions tab.
 Pushed and deployed: the workflow runs green and Pages serves the repo (secrets and Pages are set up).
 
 Audio Cutter's releases v1.0.0 and v1.1.0 were signed with throwaway keys (`c3356b46…`, `b0a8068d…`). They are
-being replaced: new release key `db171ead…`, old releases to delete, new tag, phone uninstalls the app once.
+being replaced by v1.1.1, the first release signed with the release key `db171ead…`. Remaining steps, by the user:
+add the two `RELEASE_KEYSTORE_*` secrets to `audio_player`, delete the v1.0.0 and v1.1.0 releases, push both repos
+and the `v1.1.1` tag, run the publish workflow, then uninstall the app on the phone once and reinstall it from the
+repo. Done when `releases.txt` lists only v1.1.1.

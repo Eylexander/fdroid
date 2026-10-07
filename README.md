@@ -32,9 +32,10 @@ is used). Scheduled runs compare that list with the deployed `releases.txt` and 
 
 ## Rules worth knowing
 
-- **Each app must always be signed with the same key.** Android refuses an update signed differently. Audio Cutter's
-  release workflow signs with the debug key restored from its `DEBUG_KEYSTORE_BASE64` secret; without that secret
-  each release gets a throwaway key and can't update the previous one.
+- **Each app must always be signed with the same key.** Android refuses an update signed differently. Audio Cutter
+  is signed with its own release key (`.secrets/` in its repository, restored in CI from the
+  `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets); its workflow refuses to publish a release without
+  it.
 - **versionCode must increase** from one release to the next (Audio Cutter's release workflow uses the run number).
 - Debug builds are rejected (`android:debuggable`).
 
