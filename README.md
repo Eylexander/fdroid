@@ -38,8 +38,8 @@ update after the next F-Droid refresh.
 - **Each app must always be signed with the same key.** Android refuses an update signed differently. Audio Cutter
   is signed with the debug key of this PC (`~/.android/debug.keystore`): back that file up, or move the app to a
   real release key before others install it (that change forces one uninstall).
-- **versionCode must increase.** `--split-per-abi` builds use `1000 × abi + build number` (arm64 = 2xxx), so only
-  publish one ABI per app, or all of them for every release.
+- **versionCode must increase.** It's the `+N` build number of `version:` in `pubspec.yaml`. Every ABI split of
+  a build shares it, so publish one ABI per app (arm64 covers current phones).
 - Debug builds are rejected (`android:debuggable`).
 
 ## Repo signing key (one-time setup, already done)
