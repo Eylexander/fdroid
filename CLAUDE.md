@@ -13,7 +13,8 @@ only app so far is Audio Cutter (`com.eylexander.audio_cutter`), whose source is
   release APKs; on scheduled runs it stops if the list equals the deployed `releases.txt`. Otherwise `build`
   installs fdroidserver (pip), restores the signing key from secrets, downloads the APKs, runs `fdroid update`, then
   deploys `site/` to Pages: the generated `repo/`, `releases.txt`, and `site.html` turned into `index.html` (the
-  `@ADD_URL@`, `@REPO_URL@`, `@FINGERPRINT@`, `@APPS@` placeholders are filled by `sed`).
+  `@ADD_URL@`, `@REPO_URL@`, `@FINGERPRINT@`, `@SOURCE_URL@` placeholders are filled by `sed`; the `@APPS@` line
+  is replaced by app cards built from the metadata, `releases.txt` and the icons of `fdroid update`).
 - Everything `fdroid update` generates (`repo/index*`, `repo/entry*`, icons, `tmp/`, `archive/`) is git-ignored and
   exists only in CI.
 
@@ -23,7 +24,7 @@ only app so far is Audio Cutter (`com.eylexander.audio_cutter`), whose source is
 | `metadata/<package>.yml` | Store listing for each app (Name, Summary, Description, Categories, SourceCode) |
 | `scripts/fetch-releases.sh` | Lists (`--list`) or downloads the release APKs into `repo/`. Needs curl and jq |
 | `scripts/new-keystore.sh` | Created the repo signing key once. Refuses to overwrite it |
-| `site.html` | Landing page template (link + QR code via qrcodejs from cdnjs) |
+| `site.html` | Landing page template (add link, QR code via qrcodejs from cdnjs, app cards, GitHub link) |
 
 ## Commands
 

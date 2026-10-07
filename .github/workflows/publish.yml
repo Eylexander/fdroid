@@ -90,13 +90,28 @@ jobs:
           mkdir -p site
           cp -r repo site/repo
           cp releases.txt site/releases.txt
-          apps=$(ls metadata/*.yml | xargs -n1 basename | sed 's/\.yml$//' \
-            | while read -r id; do
-                name=$(sed -n 's/^Name: *//p' "metadata/$id.yml")
-                echo "<li>${name:-$id} <code>$id</code></li>"
-              done)
+          esc() { sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'; }
+          for meta in metadata/*.yml; do
+            id=$(basename "$meta" .yml)
+            name=$(sed -n 's/^Name: *//p' "$meta" | esc); name=${name:-$id}
+            summary=$(sed -n 's/^Summary: *//p' "$meta" | esc)
+            src=$(sed -n 's/^SourceCode: *//p' "$meta")
+            version=$(awk -v id="$id" '$1 == id { print $2; exit }' releases.txt)
+            icon=$(ls repo/icons-640/"$id".*.png repo/icons-480/"$id".*.png repo/icons/"$id".*.png 2>/dev/null \
+              | sort -V | tail -1 || true)
+            echo '<li class="card app">'
+            if [ -n "$icon" ]; then echo "<img class=\"app-icon\" src=\"$icon\" alt=\"\">"
+            else echo "<div class=\"app-icon\">${name:0:1}</div>"; fi
+            echo "<div class=\"app-body\"><h3 class=\"app-title\">$name${version:+ <span class=\"badge\">$version</span>}</h3>"
+            [ -z "$summary" ] || echo "<p class=\"app-summary\">$summary</p>"
+            echo "<div class=\"app-meta\"><code>$id</code>"
+            [ -z "$src" ] || echo "<a href=\"$src\">Source code</a> <a href=\"$src/releases\">Releases</a>"
+            echo '</div></div></li>'
+          done > apps.html
+          source_url="$GITHUB_SERVER_URL/$GITHUB_REPOSITORY"
           sed -e "s|@ADD_URL@|$add_url|g" -e "s|@REPO_URL@|$repo_url|g" \
-              -e "s|@FINGERPRINT@|$fingerprint|g" -e "s|@APPS@|$(echo $apps)|g" \
+              -e "s|@FINGERPRINT@|$fingerprint|g" -e "s|@SOURCE_URL@|$source_url|g" \
+              -e '/^@APPS@$/{r apps.html' -e 'd}' \
               site.html > site/index.html
           touch site/.nojekyll
           echo "Repo: $add_url" >> "$GITHUB_STEP_SUMMARY"

@@ -4,51 +4,160 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Eylexander's apps</title>
+<meta name="description" content="Personal F-Droid repository of Eylexander's Android apps.">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='8' fill='%234f46e5'/><path d='M10 21l6-11 6 11z' fill='white'/></svg>">
 <style>
-  :root { --bg: #f6f6fb; --card: #fff; --text: #1b1b24; --muted: #5d5d70; --accent: #4f46e5; --line: #e2e2ee; }
+  :root {
+    --bg: #f5f5fa; --card: #ffffff; --text: #17171f; --muted: #5d5d70; --line: #e3e3ee;
+    --accent: #4f46e5; --accent-2: #9333ea; --on-accent: #ffffff; --soft: #eef0ff; --ok: #15803d;
+    --shadow: 0 1px 2px rgb(20 20 40 / .04), 0 8px 24px rgb(20 20 40 / .06);
+  }
   @media (prefers-color-scheme: dark) {
-    :root { --bg: #111118; --card: #1c1c26; --text: #ececf4; --muted: #a0a0b4; --accent: #a5b4fc; --line: #2c2c3a; }
+    :root {
+      --bg: #0e0e14; --card: #181822; --text: #ececf4; --muted: #a0a0b4; --line: #2a2a38;
+      --accent: #818cf8; --accent-2: #c084fc; --on-accent: #0e0e14; --soft: #20203a; --ok: #4ade80;
+      --shadow: 0 1px 2px rgb(0 0 0 / .3), 0 8px 24px rgb(0 0 0 / .25);
+    }
   }
   * { box-sizing: border-box; }
-  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, sans-serif; }
-  main { max-width: 640px; margin: 0 auto; padding: 40px 16px; }
-  h1 { font-size: 2rem; font-weight: 800; margin: 0 0 4px; }
-  p { color: var(--muted); margin: 0 0 24px; }
-  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
-  .btn { display: inline-block; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700;
-         padding: 12px 20px; border-radius: 999px; }
-  #qr { background: #fff; padding: 12px; border-radius: 12px; width: max-content; margin-top: 16px; }
-  code { font-size: .85em; overflow-wrap: anywhere; color: var(--muted); }
-  ul { padding-left: 20px; margin: 0; }
-  h2 { font-size: 1rem; margin: 0 0 8px; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.55 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif; }
+  a { color: var(--accent); }
+  main { max-width: 760px; margin: 0 auto; padding: 0 16px 48px; }
+
+  .hero { position: relative; overflow: hidden; border-radius: 0 0 28px 28px; margin: 0 -16px 24px; padding: 48px 32px 40px;
+          background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; }
+  .hero::after { content: ""; position: absolute; inset: auto -80px -120px auto; width: 320px; height: 320px; border-radius: 50%;
+                 background: rgb(255 255 255 / .12); }
+  .hero-inner { position: relative; z-index: 1; display: flex; gap: 32px; align-items: center; justify-content: space-between; flex-wrap: wrap; }
+  .eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; font-weight: 700; opacity: .85; margin: 0 0 6px; }
+  h1 { font-size: clamp(1.9rem, 5vw, 2.6rem); line-height: 1.1; font-weight: 800; margin: 0 0 10px; }
+  .hero p { margin: 0 0 22px; max-width: 34ch; opacity: .92; }
+  .actions { display: flex; gap: 10px; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; gap: 8px; text-decoration: none; font-weight: 700; font-size: .95rem;
+         padding: 12px 20px; border-radius: 999px; border: 0; cursor: pointer; transition: transform .15s, box-shadow .15s; }
+  .btn:hover { transform: translateY(-1px); }
+  .btn svg { width: 18px; height: 18px; flex: none; }
+  .btn-primary { background: #fff; color: #3730a3; box-shadow: 0 6px 18px rgb(0 0 0 / .18); }
+  .btn-ghost { background: rgb(255 255 255 / .14); color: #fff; box-shadow: inset 0 0 0 1px rgb(255 255 255 / .4); }
+  #qr { background: #fff; padding: 12px; border-radius: 16px; box-shadow: 0 10px 30px rgb(0 0 0 / .2); }
+  #qr img, #qr canvas { display: block; }
+  .qr-hint { font-size: .8rem; text-align: center; margin-top: 8px; opacity: .85; }
+
+  section { margin-top: 28px; }
+  h2 { font-size: .8rem; text-transform: uppercase; letter-spacing: .1em; color: var(--muted); margin: 0 0 12px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px; box-shadow: var(--shadow); }
+
+  .apps { list-style: none; padding: 0; margin: 0; display: grid; gap: 14px; }
+  .app { display: flex; gap: 16px; align-items: flex-start; }
+  .app-icon { width: 56px; height: 56px; border-radius: 16px; flex: none; object-fit: cover; background: var(--soft);
+              display: grid; place-items: center; font-weight: 800; font-size: 1.4rem; color: var(--accent); }
+  .app-body { min-width: 0; flex: 1; }
+  .app-title { display: flex; align-items: baseline; gap: 8px; flex-wrap: wrap; margin: 0; font-size: 1.1rem; }
+  .badge { font-size: .75rem; font-weight: 700; color: var(--accent); background: var(--soft); padding: 2px 8px; border-radius: 999px; }
+  .app-summary { color: var(--muted); margin: 2px 0 8px; }
+  .app-meta { display: flex; gap: 14px; flex-wrap: wrap; font-size: .85rem; align-items: center; }
+  .app-meta code { color: var(--muted); }
+
+  .steps { counter-reset: step; list-style: none; padding: 0; margin: 0; display: grid; gap: 12px; }
+  .steps li { counter-increment: step; display: flex; gap: 12px; align-items: flex-start; }
+  .steps li::before { content: counter(step); flex: none; width: 26px; height: 26px; border-radius: 50%; display: grid; place-items: center;
+                      background: var(--soft); color: var(--accent); font-weight: 800; font-size: .85rem; }
+
+  .field + .field { margin-top: 16px; }
+  .label { font-size: .85rem; font-weight: 700; margin-bottom: 6px; }
+  .copy-row { display: flex; gap: 8px; align-items: stretch; }
+  .copy-row code { flex: 1; min-width: 0; background: var(--bg); border: 1px solid var(--line); border-radius: 10px; padding: 9px 12px;
+                   font-size: .82rem; overflow-wrap: anywhere; color: var(--text); }
+  .copy { background: var(--soft); color: var(--accent); border: 0; border-radius: 10px; padding: 0 14px; font: inherit;
+          font-weight: 700; font-size: .85rem; cursor: pointer; }
+  .copy.done { color: var(--ok); }
+
+  footer { margin-top: 40px; text-align: center; color: var(--muted); font-size: .85rem; }
+  footer a { color: inherit; font-weight: 600; }
+
+  @media (max-width: 560px) {
+    .hero { padding: 36px 20px 32px; }
+    .qr-wrap { display: none; }
+    .actions .btn { flex: 1; justify-content: center; }
+  }
 </style>
 </head>
 <body>
 <main>
-  <h1>Eylexander's apps</h1>
-  <p>Personal F-Droid repository. Add it in F-Droid, Droid-ify or Neo Store to get updates.</p>
+  <header class="hero">
+    <div class="hero-inner">
+      <div>
+        <p class="eyebrow">F-Droid repository</p>
+        <h1>Eylexander's apps</h1>
+        <p>Add this repository to F-Droid, Droid-ify or Neo Store to install the apps and get their updates.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="@ADD_URL@">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg>
+            Add to F-Droid
+          </a>
+          <a class="btn btn-ghost" href="@SOURCE_URL@">
+            <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5a11.5 11.5 0 0 0-3.64 22.41c.58.1.79-.25.79-.56v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.69-1.28-1.69-1.05-.71.08-.7.08-.7 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.19-3.1-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.17 1.18a11 11 0 0 1 5.77 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.11 3.05.74.81 1.19 1.84 1.19 3.1 0 4.42-2.7 5.4-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.21.67.8.56A11.5 11.5 0 0 0 12 .5Z"/></svg>
+            View on GitHub
+          </a>
+        </div>
+      </div>
+      <div class="qr-wrap">
+        <div id="qr"></div>
+        <div class="qr-hint">Scan with your phone</div>
+      </div>
+    </div>
+  </header>
 
-  <div class="card">
-    <a class="btn" href="@ADD_URL@">Add to F-Droid</a>
-    <div id="qr"></div>
-  </div>
-
-  <div class="card">
-    <h2>Repository address</h2>
-    <code>@REPO_URL@</code>
-    <h2 style="margin-top:16px">Fingerprint (SHA-256)</h2>
-    <code>@FINGERPRINT@</code>
-  </div>
-
-  <div class="card">
+  <section>
     <h2>Apps</h2>
-    <ul>@APPS@</ul>
-  </div>
+    <ul class="apps">
+@APPS@
+    </ul>
+  </section>
+
+  <section>
+    <h2>How to add it</h2>
+    <div class="card">
+      <ol class="steps">
+        <li><span>Install <a href="https://f-droid.org">F-Droid</a>, <a href="https://github.com/Droid-ify/client">Droid-ify</a> or <a href="https://github.com/NeoApplications/Neo-Store">Neo Store</a>.</span></li>
+        <li><span>On your phone, tap <strong>Add to F-Droid</strong> above, or scan the QR code from a computer.</span></li>
+        <li><span>Confirm that the fingerprint matches the one below, then install the apps from the repository.</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <section>
+    <h2>Add it manually</h2>
+    <div class="card">
+      <div class="field">
+        <div class="label">Repository address</div>
+        <div class="copy-row"><code>@REPO_URL@</code><button class="copy" type="button">Copy</button></div>
+      </div>
+      <div class="field">
+        <div class="label">Fingerprint (SHA-256)</div>
+        <div class="copy-row"><code>@FINGERPRINT@</code><button class="copy" type="button">Copy</button></div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    Built from <a href="@SOURCE_URL@">github.com/Eylexander/fdroid</a> with fdroidserver · Updated automatically from the apps' GitHub releases
+  </footer>
 </main>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
 <script>
-  try { new QRCode(document.getElementById("qr"), { text: "@ADD_URL@", width: 200, height: 200 }); }
-  catch (e) { document.getElementById("qr").remove(); }
+  try { new QRCode(document.getElementById("qr"), { text: "@ADD_URL@", width: 168, height: 168 }); }
+  catch (e) { document.querySelector(".qr-wrap").remove(); }
+
+  document.querySelectorAll(".copy").forEach(function (btn) {
+    btn.addEventListener("click", function () {
+      var text = btn.previousElementSibling.textContent.trim();
+      navigator.clipboard.writeText(text).then(function () {
+        btn.textContent = "Copied"; btn.classList.add("done");
+        setTimeout(function () { btn.textContent = "Copy"; btn.classList.remove("done"); }, 1500);
+      });
+    });
+  });
 </script>
 </body>
 </html>
