@@ -42,9 +42,9 @@ release). Then wait for the schedule or run the workflow from the Actions tab.
   the repo. Fingerprint: `A82A40DB36060D3F313871D07E609EDB6CF9314252874F75A48CA2A1F3A8DC08`.
 - GitHub secrets: `FDROID_KEYSTORE_B64`, `FDROID_KEYSTORE_PASS` (same password for store and key, alias
   `fdroid-repo`).
-- An app must always be signed with the same key, or Android refuses the update. Audio Cutter's release workflow
-  signs with the debug key from its `DEBUG_KEYSTORE_BASE64` secret (meant to be this PC's
-  `~/.android/debug.keystore`).
+- An app must always be signed with the same key, or Android refuses the update. Audio Cutter is signed with its
+  release key in `../fossify/.secrets/` (SHA-256 `db171ead…`); its workflow gets it from the
+  `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets and refuses to publish a tag without them.
 - versionCode must go up for each release (Audio Cutter's release workflow sets it to the run number).
 - Debug APKs (`application-debuggable`) are rejected by F-Droid.
 - `archive_older: 0`: only the last 3 releases are downloaded, so there is no archive repo to publish.
@@ -59,9 +59,7 @@ release). Then wait for the schedule or run the workflow from the Actions tab.
 
 ## Status (2026-10-08)
 
-Switched from committed APKs to downloading GitHub releases. **Not pushed yet, and the workflow has never run**:
-the GitHub repo, the two secrets and Pages (source: GitHub Actions) still have to be set up by the user (steps in
-README). The first CI run is the first real test of `fdroid update` with this config.
+Pushed and deployed: the workflow runs green and Pages serves the repo (secrets and Pages are set up).
 
-Audio Cutter's releases v1.0.0 (versionCode 1) and v1.1.0 (versionCode 3) are each signed with a different
-throwaway key (`DEBUG_KEYSTORE_BASE64` wasn't set in `audio_player`), and neither matches this PC's debug key.
+Audio Cutter's releases v1.0.0 and v1.1.0 were signed with throwaway keys (`c3356b46…`, `b0a8068d…`). They are
+being replaced: new release key `db171ead…`, old releases to delete, new tag, phone uninstalls the app once.
