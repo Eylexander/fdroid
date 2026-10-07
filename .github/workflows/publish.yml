@@ -40,8 +40,11 @@ jobs:
           echo "$FDROID_KEYSTORE_B64" | base64 -d > keystore.p12
           chmod 600 keystore.p12 config.yml
 
+      # fdroid update indexes every file in repo/ and rejects empty ones.
       - name: Build and sign the index
-        run: fdroid update --verbose
+        run: |
+          rm -f repo/.gitkeep
+          fdroid update --verbose
 
       - name: Lint metadata
         run: fdroid lint || true
