@@ -12,3 +12,6 @@ repo/icons*/
 repo/*/
 !repo/.gitkeep
 site/
+
+# APKs are downloaded from the apps' GitHub releases in CI.
+repo/*.apk

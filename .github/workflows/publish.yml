@@ -1,8 +1,12 @@
 name: Publish F-Droid repo
 
+# APKs come from the GitHub releases of each app (scripts/fetch-releases.sh). The schedule picks up new
+# releases; it only rebuilds when the list of release APKs differs from the deployed site's releases.txt.
 on:
   push:
     branches: [main]
+  schedule:
+    - cron: '23 */6 * * *'
   workflow_dispatch:
 
 permissions:
@@ -15,7 +19,30 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
+  check:
+    runs-on: ubuntu-24.04
+    outputs:
+      changed: ${{ steps.diff.outputs.changed }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: diff
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          scripts/fetch-releases.sh --list > releases.txt
+          cat releases.txt
+          site=$(sed -n 's/^repo_url: *//p' config.yml)
+          if [ "$GITHUB_EVENT_NAME" = schedule ] && curl -fsSL "${site%/repo}/releases.txt" | cmp -s - releases.txt; then
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            echo "No new release." >> "$GITHUB_STEP_SUMMARY"
+          else
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          fi
+
   build:
+    needs: check
+    if: needs.check.outputs.changed == 'true'
     runs-on: ubuntu-24.04
     env:
       FDROID_KEYSTORE_PASS: ${{ secrets.FDROID_KEYSTORE_PASS }}
@@ -40,6 +67,11 @@ jobs:
           echo "$FDROID_KEYSTORE_B64" | base64 -d > keystore.p12
           chmod 600 keystore.p12 config.yml
 
+      - name: Download release APKs
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: scripts/fetch-releases.sh | tee releases.txt
+
       # fdroid update indexes every file in repo/ and rejects empty ones.
       - name: Build and sign the index
         run: |
@@ -57,6 +89,7 @@ jobs:
           add_url="${repo_url}?fingerprint=${fingerprint}"
           mkdir -p site
           cp -r repo site/repo
+          cp releases.txt site/releases.txt
           apps=$(ls metadata/*.yml | xargs -n1 basename | sed 's/\.yml$//' \
             | while read -r id; do
                 name=$(sed -n 's/^Name: *//p' "metadata/$id.yml")

@@ -1,7 +1,8 @@
 # Eylexander's F-Droid repo
 
-Personal F-Droid repository for my Android apps. APKs are committed to `repo/`; on every push GitHub Actions
-runs `fdroid update`, signs the index and publishes it on GitHub Pages:
+Personal F-Droid repository for my Android apps. Nothing is stored here but the store listings: every 6 hours
+(and on every push) GitHub Actions looks for new GitHub releases of each app, downloads their APKs, runs
+`fdroid update`, signs the index and publishes it on GitHub Pages:
 
 - Landing page (link + QR code): https://eylexander.github.io/fdroid/
 - Repo address: https://eylexander.github.io/fdroid/repo
@@ -13,33 +14,28 @@ runs `fdroid update`, signs the index and publishes it on GitHub Pages:
 
 ## Publishing an update
 
-```sh
-# in the app's project: bump `version:` in pubspec.yaml (the +build number must go up), then
-flutter build apk --release --split-per-abi
+Publish a GitHub release with the APK attached in the app's repository (for Audio Cutter: push a `v*` tag). Nothing
+to do here: within 6 hours the scheduled run picks it up, or run "Publish F-Droid repo" from the Actions tab to
+publish it right away. Phones see the update after their next F-Droid refresh.
 
-# here:
-scripts/publish.sh ../fossify/build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-git push
-```
-
-`publish.sh` reads the package and versionCode with `aapt2`, copies the APK to `repo/<package>_<versionCode>.apk`,
-keeps the last 3 versions of each app (`KEEP=5 scripts/publish.sh …` to change that) and commits. Phones see the
-update after the next F-Droid refresh.
+`scripts/fetch-releases.sh` reads the GitHub repository from `SourceCode:` in `metadata/<package>.yml` and downloads
+the APK of the last 3 releases (drafts and pre-releases are skipped; if a release has several APKs, the `arm64` one
+is used). Scheduled runs compare that list with the deployed `releases.txt` and stop there when nothing changed.
 
 ## Adding another app
 
 1. Copy `metadata/com.eylexander.audio_cutter.yml` to `metadata/<package>.yml` and edit it
    ([metadata reference](https://f-droid.org/docs/Build_Metadata_Reference/)). Screenshots and icons can go in
    `metadata/<package>/en-US/` (fastlane layout: `images/icon.png`, `images/phoneScreenshots/1.png`…).
-2. `scripts/publish.sh path/to/release.apk` and push.
+   `SourceCode:` must be the app's GitHub repository, which must publish releases with an APK attached.
+2. Push.
 
 ## Rules worth knowing
 
-- **Each app must always be signed with the same key.** Android refuses an update signed differently. Audio Cutter
-  is signed with the debug key of this PC (`~/.android/debug.keystore`): back that file up, or move the app to a
-  real release key before others install it (that change forces one uninstall).
-- **versionCode must increase.** It's the `+N` build number of `version:` in `pubspec.yaml`. Every ABI split of
-  a build shares it, so publish one ABI per app (arm64 covers current phones).
+- **Each app must always be signed with the same key.** Android refuses an update signed differently. Audio Cutter's
+  release workflow signs with the debug key restored from its `DEBUG_KEYSTORE_BASE64` secret; without that secret
+  each release gets a throwaway key and can't update the previous one.
+- **versionCode must increase** from one release to the next (Audio Cutter's release workflow uses the run number).
 - Debug builds are rejected (`android:debuggable`).
 
 ## Repo signing key (one-time setup, already done)

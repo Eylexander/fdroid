@@ -7,7 +7,7 @@ repo_description: >-
   Personal F-Droid repository for Eylexander's Android apps, built from
   their own source repositories.
 
-# Old versions are pruned by scripts/publish.sh, so no archive repo.
+# Only the last KEEP (3) releases are downloaded (scripts/fetch-releases.sh), so no archive repo.
 archive_older: 0
 
 repo_keyalias: fdroid-repo
