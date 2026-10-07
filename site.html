@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Eylexander's apps</title>
+<style>
+  :root { --bg: #f6f6fb; --card: #fff; --text: #1b1b24; --muted: #5d5d70; --accent: #4f46e5; --line: #e2e2ee; }
+  @media (prefers-color-scheme: dark) {
+    :root { --bg: #111118; --card: #1c1c26; --text: #ececf4; --muted: #a0a0b4; --accent: #a5b4fc; --line: #2c2c3a; }
+  }
+  * { box-sizing: border-box; }
+  body { margin: 0; background: var(--bg); color: var(--text); font: 16px/1.5 system-ui, sans-serif; }
+  main { max-width: 640px; margin: 0 auto; padding: 40px 16px; }
+  h1 { font-size: 2rem; font-weight: 800; margin: 0 0 4px; }
+  p { color: var(--muted); margin: 0 0 24px; }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; }
+  .btn { display: inline-block; background: var(--accent); color: var(--bg); text-decoration: none; font-weight: 700;
+         padding: 12px 20px; border-radius: 999px; }
+  #qr { background: #fff; padding: 12px; border-radius: 12px; width: max-content; margin-top: 16px; }
+  code { font-size: .85em; overflow-wrap: anywhere; color: var(--muted); }
+  ul { padding-left: 20px; margin: 0; }
+  h2 { font-size: 1rem; margin: 0 0 8px; }
+</style>
+</head>
+<body>
+<main>
+  <h1>Eylexander's apps</h1>
+  <p>Personal F-Droid repository. Add it in F-Droid, Droid-ify or Neo Store to get updates.</p>
+
+  <div class="card">
+    <a class="btn" href="@ADD_URL@">Add to F-Droid</a>
+    <div id="qr"></div>
+  </div>
+
+  <div class="card">
+    <h2>Repository address</h2>
+    <code>@REPO_URL@</code>
+    <h2 style="margin-top:16px">Fingerprint (SHA-256)</h2>
+    <code>@FINGERPRINT@</code>
+  </div>
+
+  <div class="card">
+    <h2>Apps</h2>
+    <ul>@APPS@</ul>
+  </div>
+</main>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+  try { new QRCode(document.getElementById("qr"), { text: "@ADD_URL@", width: 200, height: 200 }); }
+  catch (e) { document.getElementById("qr").remove(); }
+</script>
+</body>
+</html>

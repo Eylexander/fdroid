@@ -1,0 +1,15 @@
+Categories:
+  - Multimedia
+AuthorName: Eylexander
+SourceCode: https://github.com/Eylexander/audio_player
+
+Name: Audio Cutter
+Summary: Music player with playlists, video to audio and lossless audio cutting
+Description: |-
+  A music player in the style of Fossify Music Player, built around playlists.
+
+  * Playlists first: create, reorder, import M3U, and keep a folder of copies for each playlist.
+  * Background playback with notification and lock-screen controls.
+  * Video to audio: keeps only the soundtrack of a video, without re-encoding.
+  * Cut audio: trims any audio file. AAC, MP3 and Opus are copied as-is; other formats are saved as lossless FLAC.
+  * Light, dark and pure-black themes with the Material You accent color.

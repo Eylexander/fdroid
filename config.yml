@@ -1,0 +1,19 @@
+# fdroidserver configuration. Secrets come from environment variables
+# (GitHub Actions secrets), never from this file.
+
+repo_url: https://eylexander.github.io/fdroid/repo
+repo_name: Eylexander's apps
+repo_description: >-
+  Personal F-Droid repository for Eylexander's Android apps, built from
+  their own source repositories.
+
+# Old versions are pruned by scripts/publish.sh, so no archive repo.
+archive_older: 0
+
+repo_keyalias: fdroid-repo
+keystore: keystore.p12
+keystorepass:
+  env: FDROID_KEYSTORE_PASS
+keypass:
+  env: FDROID_KEYSTORE_PASS
+keydname: CN=Eylexander F-Droid repo, OU=F-Droid

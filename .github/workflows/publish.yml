@@ -1,0 +1,80 @@
+name: Publish F-Droid repo
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: false
+
+jobs:
+  build:
+    runs-on: ubuntu-24.04
+    env:
+      FDROID_KEYSTORE_PASS: ${{ secrets.FDROID_KEYSTORE_PASS }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install fdroidserver
+        run: pip install fdroidserver
+
+      - name: Restore signing key
+        env:
+          FDROID_KEYSTORE_B64: ${{ secrets.FDROID_KEYSTORE_B64 }}
+        run: |
+          if [ -z "$FDROID_KEYSTORE_B64" ] || [ -z "$FDROID_KEYSTORE_PASS" ]; then
+            echo "::error::Set the FDROID_KEYSTORE_B64 and FDROID_KEYSTORE_PASS secrets (see README)."
+            exit 1
+          fi
+          echo "$FDROID_KEYSTORE_B64" | base64 -d > keystore.p12
+          chmod 600 keystore.p12 config.yml
+
+      - name: Build and sign the index
+        run: fdroid update --verbose
+
+      - name: Lint metadata
+        run: fdroid lint || true
+
+      - name: Assemble site
+        run: |
+          fingerprint=$(keytool -list -v -keystore keystore.p12 -storepass "$FDROID_KEYSTORE_PASS" -alias fdroid-repo \
+            | sed -nE 's/.*SHA ?256: *//p' | tr -d ':[:space:]')
+          repo_url=$(sed -n 's/^repo_url: *//p' config.yml)
+          add_url="${repo_url}?fingerprint=${fingerprint}"
+          mkdir -p site
+          cp -r repo site/repo
+          apps=$(ls metadata/*.yml | xargs -n1 basename | sed 's/\.yml$//' \
+            | while read -r id; do
+                name=$(sed -n 's/^Name: *//p' "metadata/$id.yml")
+                echo "<li>${name:-$id} <code>$id</code></li>"
+              done)
+          sed -e "s|@ADD_URL@|$add_url|g" -e "s|@REPO_URL@|$repo_url|g" \
+              -e "s|@FINGERPRINT@|$fingerprint|g" -e "s|@APPS@|$(echo $apps)|g" \
+              site.html > site/index.html
+          touch site/.nojekyll
+          echo "Repo: $add_url" >> "$GITHUB_STEP_SUMMARY"
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+  deploy:
+    needs: build
+    runs-on: ubuntu-24.04
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - id: deployment
+        uses: actions/deploy-pages@v4
