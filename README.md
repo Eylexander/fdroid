@@ -26,18 +26,25 @@ is used). Scheduled runs compare that list with the deployed `releases.txt` and 
 ## Adding another app
 
 1. Copy `metadata/com.eylexander.audio_cutter.yml` to `metadata/<package>.yml` and edit it
-   ([metadata reference](https://f-droid.org/docs/Build_Metadata_Reference/)). Screenshots and icons can go in
-   `metadata/<package>/en-US/` (fastlane layout: `images/icon.png`, `images/phoneScreenshots/1.png`…).
-   `SourceCode:` must be the app's GitHub repository, which must publish releases with an APK attached.
-2. Push.
+   ([metadata reference](https://f-droid.org/docs/Build_Metadata_Reference/)). `SourceCode:` must be the app's
+   GitHub repository, which must publish releases with an APK attached.
+2. Copy `metadata/com.eylexander.audio_cutter/` to `metadata/<package>/` and edit it (fastlane layout, one folder
+   per locale, `en-US` required): `title.txt` (≤ 30 characters), `short_description.txt` (≤ 80),
+   `full_description.txt` (≤ 4000, HTML allowed), `images/icon.png` (512 px). Screenshots can go in
+   `images/phoneScreenshots/1.png`…. The publish workflow refuses a listing that misses one of these.
+3. For a Flutter app, copy `.github/workflows/release.yml` from one of the apps (it calls this repo's
+   [`flutter-apk.yml`](.github/workflows/flutter-apk.yml)) and set its APK name, Flutter version and the
+   `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets.
+4. Push.
 
 ## Rules worth knowing
 
 - **Each app must always be signed with the same key.** Android refuses an update signed differently. Audio Cutter
-  is signed with its own release key (`.secrets/` in its repository, restored in CI from the
-  `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets); its workflow refuses to publish a release without
-  it.
-- **versionCode must increase** from one release to the next (Audio Cutter's release workflow uses the run number).
+  and LLLearner share a release key (`.secrets/` in their repositories, restored in CI from the
+  `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets); `flutter-apk.yml` refuses to publish a release
+  without it.
+- **versionCode must increase** from one release to the next (`flutter-apk.yml` uses the run number of the app's
+  `release.yml`, so don't rename that file).
 - Debug builds are rejected (`android:debuggable`).
 
 ## Repo signing key (one-time setup, already done)

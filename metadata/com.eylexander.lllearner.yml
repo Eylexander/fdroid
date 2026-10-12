@@ -3,7 +3,4 @@ Categories:
 AuthorName: Eylexander
 SourceCode: https://github.com/Eylexander/lllearner
 
-# Localized title, descriptions and icon: metadata/com.eylexander.lllearner/{en-US,fr-FR}/.
-# Name and Summary are also used by the landing page's app card.
-Name: LLLearner
-Summary: Learn Taiwan Mandarin from French, with lessons, reviews and Claude as a tutor
+# Title, descriptions and icon: metadata/com.eylexander.lllearner/{en-US,fr-FR}/ (fastlane names).

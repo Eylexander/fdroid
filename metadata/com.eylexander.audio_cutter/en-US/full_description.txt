@@ -1,0 +1,8 @@
+<p>A music player in the style of Fossify Music Player, built around playlists, that also turns videos into audio and cuts audio files without losing quality.</p>
+<ul>
+<li><b>Playlists first</b>: create, reorder, import M3U, and put a playlist's songs in a folder of their own.</li>
+<li><b>Background playback</b> with notification and lock-screen controls, and the song's real waveform as the seek bar.</li>
+<li><b>Video to audio</b>: keeps only the soundtrack of a video, without re-encoding.</li>
+<li><b>Cut audio</b>: trims any audio file. AAC, MP3 and Opus are copied as-is; other formats are saved as lossless FLAC.</li>
+<li><b>Material You</b>: the accent color on Android 12+, light, dark and pure-black themes.</li>
+</ul>

@@ -72,6 +72,25 @@ jobs:
           GH_TOKEN: ${{ github.token }}
         run: scripts/fetch-releases.sh | tee releases.txt
 
+      # Every app has the same listing layout: metadata/<package>.yml for the fields, metadata/<package>/<locale>/
+      # for the text (fastlane names and limits) and the icon. en-US is required: the landing page reads it.
+      - name: Check listings
+        run: |
+          for meta in metadata/*.yml; do
+            id=$(basename "$meta" .yml)
+            for f in title.txt short_description.txt full_description.txt images/icon.png; do
+              [ -s "metadata/$id/en-US/$f" ] || { echo "::error::metadata/$id/en-US/$f is missing"; exit 1; }
+            done
+            for dir in metadata/"$id"/*/; do
+              for limit in title.txt:30 short_description.txt:80 full_description.txt:4000; do
+                f=$dir${limit%:*}; max=${limit#*:}
+                [ -f "$f" ] || continue
+                n=$(tr -d '\r\n' < "$f" | wc -m)
+                [ "$n" -le "$max" ] || { echo "::error::$f is $n characters (max $max)"; exit 1; }
+              done
+            done
+          done
+
       # fdroid update indexes every file in repo/ and rejects empty ones.
       - name: Build and sign the index
         run: |
@@ -91,13 +110,14 @@ jobs:
           cp -r repo site/repo
           cp releases.txt site/releases.txt
           esc() { sed -e 's/&/\&amp;/g' -e 's/</\&lt;/g' -e 's/>/\&gt;/g'; }
+          line() { if [ -f "$1" ]; then head -n1 "$1" | tr -d '\r' | esc; fi; }
           for meta in metadata/*.yml; do
             id=$(basename "$meta" .yml)
-            name=$(sed -n 's/^Name: *//p' "$meta" | esc); name=${name:-$id}
-            summary=$(sed -n 's/^Summary: *//p' "$meta" | esc)
+            name=$(line "metadata/$id/en-US/title.txt"); name=${name:-$id}
+            summary=$(line "metadata/$id/en-US/short_description.txt")
             src=$(sed -n 's/^SourceCode: *//p' "$meta")
             version=$(awk -v id="$id" '$1 == id { print $2; exit }' releases.txt)
-            # The store icon from metadata/<id>/en-US/images/ first (apps with a vector-only launcher icon), else the APK's.
+            # The store icon from metadata/<id>/en-US/images/ (both apps have vector-only launcher icons), else the APK's.
             icon=$(ls repo/"$id"/en-US/icon*.png 2>/dev/null | head -1 || true)
             [ -n "$icon" ] || icon=$(ls repo/icons-640/"$id".*.png repo/icons-480/"$id".*.png repo/icons/"$id".*.png \
               2>/dev/null | sort -V | tail -1 || true)

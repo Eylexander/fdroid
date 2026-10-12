@@ -1,0 +1,100 @@
+name: Flutter APK
+
+# Shared release build of the apps published here (Audio Cutter, LLLearner). Each app's .github/workflows/release.yml
+# calls it on a v* tag (and on "Run workflow"):
+#
+#   jobs:
+#     release:
+#       uses: Eylexander/fdroid/.github/workflows/flutter-apk.yml@main
+#       with: { apk-name: my-app, flutter-version: "3.32.7" }
+#       secrets:
+#         RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+#         RELEASE_KEYSTORE_PASS: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+#
+# The caller needs `permissions: contents: write`. Everything below runs in the caller's repository: checkout, tag,
+# run number (the versionCode, so the caller's workflow file must keep its name), release. A change here applies to
+# every app's next release.
+on:
+  workflow_call:
+    inputs:
+      apk-name:
+        description: APK file prefix, e.g. audio-cutter gives audio-cutter-v1.2.0-arm64.apk
+        required: true
+        type: string
+      flutter-version:
+        required: true
+        type: string
+    secrets:
+      RELEASE_KEYSTORE_BASE64:
+        required: false
+      RELEASE_KEYSTORE_PASS:
+        required: false
+
+permissions:
+  contents: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: "21"
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: ${{ inputs.flutter-version }}
+          channel: stable
+          cache: true
+
+      # Every published APK must be signed with the same release key (.secrets/release.p12 in the app's folder on
+      # the dev PC), or phones refuse the update. A tag build fails rather than publish with another key.
+      - name: Restore signing key
+        env:
+          RELEASE_KEYSTORE_BASE64: ${{ secrets.RELEASE_KEYSTORE_BASE64 }}
+          RELEASE_KEYSTORE_PASS: ${{ secrets.RELEASE_KEYSTORE_PASS }}
+        run: |
+          if [ -n "$RELEASE_KEYSTORE_BASE64" ] && [ -n "$RELEASE_KEYSTORE_PASS" ]; then
+            echo "$RELEASE_KEYSTORE_BASE64" | base64 -d > "$RUNNER_TEMP/release.p12"
+            echo "RELEASE_KEYSTORE=$RUNNER_TEMP/release.p12" >> "$GITHUB_ENV"
+            echo "RELEASE_KEYSTORE_PASS=$RELEASE_KEYSTORE_PASS" >> "$GITHUB_ENV"
+          elif [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            echo "::error::RELEASE_KEYSTORE_BASE64 / RELEASE_KEYSTORE_PASS are not set."
+            exit 1
+          else
+            echo "::warning::Release key secrets not set; the APK is signed with a throwaway debug key."
+          fi
+
+      - run: flutter pub get
+      - run: flutter analyze
+      - run: flutter test
+
+      # arm64 only: a plain --release APK carries the engine for three ABIs (~2.5× the size), and --split-per-abi
+      # would change the versionCode per ABI. Version name from the tag, versionCode from the run number.
+      - name: Build APK
+        env:
+          APK_NAME: ${{ inputs.apk-name }}
+        run: |
+          if [ "$GITHUB_REF_TYPE" = "tag" ]; then
+            flutter build apk --release --target-platform android-arm64 --build-name "${GITHUB_REF_NAME#v}" --build-number "$GITHUB_RUN_NUMBER"
+          else
+            flutter build apk --release --target-platform android-arm64 --build-number "$GITHUB_RUN_NUMBER"
+          fi
+          mkdir -p dist
+          cp build/app/outputs/flutter-apk/app-release.apk "dist/$APK_NAME-${GITHUB_REF_NAME//\//-}-arm64.apk"
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: ${{ inputs.apk-name }}-apk
+          path: dist/*.apk
+
+      # The F-Droid repo picks the release up on its next scheduled run (every 6 hours).
+      - name: Publish release
+        if: github.ref_type == 'tag'
+        uses: softprops/action-gh-release@v2
+        with:
+          files: dist/*.apk
+          generate_release_notes: true
