@@ -49,9 +49,9 @@ release). Then wait for the schedule or run the workflow from the Actions tab.
 - GitHub secrets: `FDROID_KEYSTORE_B64`, `FDROID_KEYSTORE_PASS` (same password for store and key, alias
   `fdroid-repo`).
 - An app must always be signed with the same key, or Android refuses the update. Audio Cutter is signed with its
-  release key in `../fossify/.secrets/` (SHA-256 `db171ead…`), LLLearner with its own in `../lllearner/.secrets/`
-  (SHA-256 `849a758d…`). Both workflows get them from their repo's `RELEASE_KEYSTORE_BASE64` /
-  `RELEASE_KEYSTORE_PASS` secrets and refuse to publish a tag without them.
+  release key in `../fossify/.secrets/` (SHA-256 `db171ead…`). LLLearner uses the same key (copy in
+  `../lllearner/.secrets/`; its v1.0.0 shipped with it, so it can't change). Both workflows get it from their repo's
+  `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets and refuse to publish a tag without them.
 - versionCode must go up for each release (Audio Cutter's release workflow sets it to the run number).
 - Debug APKs (`application-debuggable`) are rejected by F-Droid.
 - `archive_older: 0`: only the last 3 releases are downloaded, so there is no archive repo to publish.
@@ -76,5 +76,5 @@ add the two `RELEASE_KEYSTORE_*` secrets to `audio_player`, delete the v1.0.0 an
 and the `v1.1.1` tag, run the publish workflow, then uninstall the app on the phone once and reinstall it from the
 repo. Done when `releases.txt` lists only v1.1.1.
 
-LLLearner was added on 2026-10-13, while its first release (v1.0.0) was being built by its workflow. Not yet
-checked: that the published card shows its icon and that `releases.txt` lists `com.eylexander.lllearner v1.0.0`.
+LLLearner was added on 2026-10-13 with its v1.0.0 release (versionCode 1, signed `db171ead…`). Not yet checked:
+that the published card shows its icon and that `releases.txt` lists `com.eylexander.lllearner v1.0.0`.
