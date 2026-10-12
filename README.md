@@ -11,12 +11,13 @@ Personal F-Droid repository for my Android apps. Nothing is stored here but the 
 | App | Package | Source |
 | --- | --- | --- |
 | Audio Cutter | `com.eylexander.audio_cutter` | [Eylexander/audio_player](https://github.com/Eylexander/audio_player) |
+| LLLearner | `com.eylexander.lllearner` | [Eylexander/lllearner](https://github.com/Eylexander/lllearner) |
 
 ## Publishing an update
 
-Publish a GitHub release with the APK attached in the app's repository (for Audio Cutter: push a `v*` tag). Nothing
-to do here: within 6 hours the scheduled run picks it up, or run "Publish F-Droid repo" from the Actions tab to
-publish it right away. Phones see the update after their next F-Droid refresh.
+Publish a GitHub release with the APK attached in the app's repository (for Audio Cutter and LLLearner: push a `v*`
+tag). Nothing to do here: within 6 hours the scheduled run picks it up, or run "Publish F-Droid repo" from the
+Actions tab to publish it right away. Phones see the update after their next F-Droid refresh.
 
 `scripts/fetch-releases.sh` reads the GitHub repository from `SourceCode:` in `metadata/<package>.yml` and downloads
 the APK of the last 3 releases (drafts and pre-releases are skipped; if a release has several APKs, the `arm64` one

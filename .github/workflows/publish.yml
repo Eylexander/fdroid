@@ -97,8 +97,10 @@ jobs:
             summary=$(sed -n 's/^Summary: *//p' "$meta" | esc)
             src=$(sed -n 's/^SourceCode: *//p' "$meta")
             version=$(awk -v id="$id" '$1 == id { print $2; exit }' releases.txt)
-            icon=$(ls repo/icons-640/"$id".*.png repo/icons-480/"$id".*.png repo/icons/"$id".*.png 2>/dev/null \
-              | sort -V | tail -1 || true)
+            # The store icon from metadata/<id>/en-US/images/ first (apps with a vector-only launcher icon), else the APK's.
+            icon=$(ls repo/"$id"/en-US/icon*.png 2>/dev/null | head -1 || true)
+            [ -n "$icon" ] || icon=$(ls repo/icons-640/"$id".*.png repo/icons-480/"$id".*.png repo/icons/"$id".*.png \
+              2>/dev/null | sort -V | tail -1 || true)
             echo '<li class="card app">'
             if [ -n "$icon" ]; then echo "<img class=\"app-icon\" src=\"$icon\" alt=\"\">"
             else echo "<div class=\"app-icon\">${name:0:1}</div>"; fi

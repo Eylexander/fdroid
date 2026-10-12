@@ -1,0 +1,12 @@
+<p>Apprenez des langues depuis le français, en cours comme dans les grandes applis de langues. Le premier cours est le <b>mandarin de Taïwan</b> (華語) : caractères traditionnels, pinyin et zhuyin, vocabulaire et prononciation de Taïwan.</p>
+<ul>
+<li><b>Leçons</b> : un parcours de courtes leçons de six mots. Chaque nouveau mot est présenté avec ses caractères, le pinyin ou le zhuyin coloré selon les tons, l'audio (normal et lent) et une phrase d'exemple, puis pratiqué aussitôt : sens, rappel, écoute, tons.</li>
+<li><b>Répétition espacée</b> : les mots appris reviennent juste avant que vous ne les oubliiez.</li>
+<li><b>Pratique</b> sur les mots déjà appris : quiz mixte, écoute, tons, points faibles.</li>
+<li><b>Lexique</b> d'environ 6 900 mots (les essentiels, puis les niveaux du TOCFL) avec 7 000 phrases d'exemple.</li>
+<li><b>Material You</b> : couleurs du fond d'écran sur Android 12+, thèmes clair et sombre, icône thématique.</li>
+<li><b>Claude comme prof</b> : ouvre l'appli Claude avec une consigne tirée de votre progression (leçons sur mesure, jeux de rôle, corrections, histoires). Partagez la réponse de Claude vers LLLearner pour importer les nouveaux mots comme prochaines leçons. Utilise votre abonnement Claude, sans clé d'API.</li>
+</ul>
+<p>Fonctionne hors ligne, sans permission réseau. L'audio utilise la synthèse vocale du téléphone : installez la voix « Chinois (Taïwan) » si l'appli la signale manquante.</p>
+<p>Liste de mots : TOCFL. Traductions françaises : CFDICT (CC BY-SA 3.0, chine-informations.com). Phrases d'exemple : Tatoeba (CC BY 2.0 FR, tatoeba.org).</p>
+<p>LLLearner n'est ni affilié à Anthropic ni approuvé par Anthropic.</p>

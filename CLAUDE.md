@@ -1,9 +1,14 @@
 # F-Droid repo
 
 The user's personal F-Droid repository. It distributes their own Android apps so phones get updates through
-F-Droid (or Droid-ify / Neo Store). Hosted on GitHub Pages at `https://eylexander.github.io/fdroid/repo`. The
-only app so far is Audio Cutter (`com.eylexander.audio_cutter`), whose source is `../fossify`
-(GitHub `Eylexander/audio_player`; it has its own CLAUDE.md).
+F-Droid (or Droid-ify / Neo Store). Hosted on GitHub Pages at `https://eylexander.github.io/fdroid/repo`. Apps
+(each source has its own CLAUDE.md):
+
+- Audio Cutter (`com.eylexander.audio_cutter`): source `../fossify`, GitHub `Eylexander/audio_player`.
+- LLLearner (`com.eylexander.lllearner`, Taiwan Mandarin for French speakers, Flutter): source `../lllearner`, GitHub
+  `Eylexander/lllearner`. Its listing is localized in `metadata/com.eylexander.lllearner/{en-US,fr-FR}/` (fastlane
+  names, plus `images/icon.png` rendered at 512 px from `../lllearner/tool/icon.svg`); keep its figures in sync with
+  the app's README.
 
 ## How it works
 
@@ -44,8 +49,9 @@ release). Then wait for the schedule or run the workflow from the Actions tab.
 - GitHub secrets: `FDROID_KEYSTORE_B64`, `FDROID_KEYSTORE_PASS` (same password for store and key, alias
   `fdroid-repo`).
 - An app must always be signed with the same key, or Android refuses the update. Audio Cutter is signed with its
-  release key in `../fossify/.secrets/` (SHA-256 `db171ead…`); its workflow gets it from the
-  `RELEASE_KEYSTORE_BASE64` / `RELEASE_KEYSTORE_PASS` secrets and refuses to publish a tag without them.
+  release key in `../fossify/.secrets/` (SHA-256 `db171ead…`), LLLearner with its own in `../lllearner/.secrets/`
+  (SHA-256 `849a758d…`). Both workflows get them from their repo's `RELEASE_KEYSTORE_BASE64` /
+  `RELEASE_KEYSTORE_PASS` secrets and refuse to publish a tag without them.
 - versionCode must go up for each release (Audio Cutter's release workflow sets it to the run number).
 - Debug APKs (`application-debuggable`) are rejected by F-Droid.
 - `archive_older: 0`: only the last 3 releases are downloaded, so there is no archive repo to publish.
@@ -57,6 +63,8 @@ release). Then wait for the schedule or run the workflow from the Actions tab.
   `SHA ?256:` to handle both.
 - Text files are forced to LF in `.gitattributes` so the scripts run in CI.
 - If a release has several APKs, `fetch-releases.sh` takes the one with `arm64` in its name, else the first.
+- `fdroid update` can't extract a PNG from a vector-only launcher icon (LLLearner), so the landing page's app card
+  uses the metadata icon (`repo/<id>/en-US/icon*.png`, copied there by `fdroid update`) before the APK's.
 
 ## Status (2026-10-08)
 
@@ -67,3 +75,6 @@ being replaced by v1.1.1, the first release signed with the release key `db171ea
 add the two `RELEASE_KEYSTORE_*` secrets to `audio_player`, delete the v1.0.0 and v1.1.0 releases, push both repos
 and the `v1.1.1` tag, run the publish workflow, then uninstall the app on the phone once and reinstall it from the
 repo. Done when `releases.txt` lists only v1.1.1.
+
+LLLearner was added on 2026-10-13, while its first release (v1.0.0) was being built by its workflow. Not yet
+checked: that the published card shows its icon and that `releases.txt` lists `com.eylexander.lllearner v1.0.0`.

@@ -1,0 +1,12 @@
+<p>Learn languages from French, in courses like the big language apps. The first course is <b>Taiwan Mandarin</b> (華語): traditional characters, pinyin and zhuyin, Taiwan vocabulary and pronunciation. The app itself is in French.</p>
+<ul>
+<li><b>Lessons</b>: a path of short six-word lessons. Each new word comes with its characters, tone-colored pinyin or zhuyin, audio (normal and slow) and an example sentence, then is practised right away: meaning, recall, listening, tones.</li>
+<li><b>Spaced repetition</b>: learned words come back just before you would forget them.</li>
+<li><b>Practice</b> on the words you already know: mixed quiz, listening, tones, weak points.</li>
+<li><b>Dictionary</b> of about 6,900 words (essentials, then the TOCFL levels) with 7,000 example sentences.</li>
+<li><b>Material You</b>: wallpaper colors on Android 12+, light and dark themes, themed icon.</li>
+<li><b>Claude as a tutor</b>: opens the Claude app with a prompt built from your progress (tailored lessons, role-plays, corrections, stories). Share Claude's reply back to LLLearner to import the new words as your next lessons. Uses your Claude subscription, no API key.</li>
+</ul>
+<p>Works offline, without the network permission. Audio uses the phone's text-to-speech: install the "Chinese (Taiwan)" voice if the app says it's missing.</p>
+<p>Word list: TOCFL. French glosses: CFDICT (CC BY-SA 3.0, chine-informations.com). Example sentences: Tatoeba (CC BY 2.0 FR, tatoeba.org).</p>
+<p>LLLearner is not affiliated with or endorsed by Anthropic.</p>
