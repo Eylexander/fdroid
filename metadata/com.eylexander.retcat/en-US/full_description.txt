@@ -11,8 +11,8 @@ Tap a bus: the map follows it as it drives, and the list of its stops shows the 
 • The next buses at each stop, live when the bus is tracked, scheduled otherwise.
 • Favorite stops with their next three buses.
 
-📱 WIDGET
-The next buses at your stop on the home screen, with a refresh button.
+📱 WIDGETS
+On your home screen, the next buses at a stop, or just the next bus at one or two stops. Each widget asks for its stop when you add it, and optionally the line and direction: your daily trip.
 
 ✨ ALSO
 • Service alerts published by TCAT.

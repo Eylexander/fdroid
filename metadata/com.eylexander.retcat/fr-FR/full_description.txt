@@ -11,8 +11,8 @@ Touchez un bus : la carte le suit pendant qu'il roule, et la liste de ses arrêt
 • Les prochains passages de chaque arrêt, en temps réel quand le bus est suivi, sinon l'horaire théorique.
 • Arrêts favoris avec leurs trois prochains bus.
 
-📱 WIDGET
-Les prochains bus de votre arrêt sur l'écran d'accueil, avec un bouton pour actualiser.
+📱 WIDGETS
+Sur l'écran d'accueil, les prochains bus d'un arrêt, ou seulement le prochain bus à un ou deux arrêts. Chaque widget demande son arrêt quand vous l'ajoutez, et au besoin la ligne et le sens : votre trajet de tous les jours.
 
 ✨ AUSSI
 • Les perturbations publiées par TCAT.
