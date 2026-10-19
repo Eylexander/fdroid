@@ -8,13 +8,15 @@ F-Droid (or Droid-ify / Neo Store). Hosted on GitHub Pages at `https://eylexande
   `en-US`.
 - LLLearner (`com.eylexander.lllearner`, Taiwan Mandarin for French speakers): source `../lllearner`, GitHub
   `Eylexander/lllearner`. Listing in `en-US` and `fr-FR`; keep its figures in sync with the app's README.
+- Re-TCAT (`com.eylexander.retcat`, live TCAT buses in Troyes): source `../re-tcat`, GitHub `Eylexander/re-tcat`.
+  Listing in `en-US` and `fr-FR`. AntiFeature `NonFreeDep` (geolocator bundles the unused Play services client).
 
-Both are Flutter apps, released by the same workflow and listed the same way:
+All are Flutter apps, released by the same workflow and listed the same way:
 
 - **Listing**: `metadata/<package>.yml` holds only the fields (Categories, AuthorName, SourceCode). The text and icon
   are in `metadata/<package>/<locale>/` with fastlane names: `title.txt` (≤ 30 characters), `short_description.txt`
   (≤ 80), `full_description.txt` (≤ 4000, HTML) and `images/icon.png` (512 px, rendered from the app's
-  `tool/icon.svg` with `rsvg-convert -w 512`). `en-US` is required: the landing page reads it. Both launcher icons are
+  `tool/icon.svg` with `rsvg-convert -w 512`). `en-US` is required: the landing page reads it. The launcher icons are
   vector-only, so `fdroid update` can't take an icon from the APK. Don't put `Name:`/`Summary:` back in the `.yml`.
 - **Release**: each app's `.github/workflows/release.yml` only calls `.github/workflows/flutter-apk.yml` from this
   repo (`@main`, so this repo must stay public) with its APK name and Flutter version, and passes its

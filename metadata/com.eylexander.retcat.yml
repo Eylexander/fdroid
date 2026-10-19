@@ -1,0 +1,10 @@
+Categories:
+  - Navigation
+AuthorName: Eylexander
+SourceCode: https://github.com/Eylexander/re-tcat
+AntiFeatures:
+  NonFreeDep:
+    en-US: The location library bundles the Google Play services location client. It is never used (the app asks Android's own location manager), but its code is in the APK.
+    fr-FR: La bibliothèque de localisation embarque le client de localisation des services Google Play. Il n'est jamais utilisé (l'app interroge le gestionnaire de position d'Android), mais son code est dans l'APK.
+
+# Title, descriptions and icon: metadata/com.eylexander.retcat/{en-US,fr-FR}/ (fastlane names).

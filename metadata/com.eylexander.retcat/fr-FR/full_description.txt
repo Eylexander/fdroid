@@ -1,0 +1,24 @@
+Où est mon bus ? Re-TCAT montre les bus du réseau TCAT de Troyes Champagne Métropole en temps réel.
+
+🗺️ TOUS LES BUS SUR LA CARTE
+Chaque bus en service apparaît avec le numéro et la couleur de sa ligne, et une flèche qui indique sa direction. Filtrez par ligne pour ne voir que la vôtre et son tracé.
+
+🚌 SUIVEZ UN BUS
+Touchez un bus : la carte le suit pendant qu'il roule, et la liste de ses arrêts affiche l'heure de passage prévue en direct, son retard ou son avance, et les arrêts non desservis.
+
+🚏 VOS ARRÊTS
+• Recherche par nom, ou les arrêts autour de vous.
+• Les prochains passages de chaque arrêt, en temps réel quand le bus est suivi, sinon l'horaire théorique.
+• Arrêts favoris avec leurs trois prochains bus.
+
+📱 WIDGET
+Les prochains bus de votre arrêt sur l'écran d'accueil, avec un bouton pour actualiser.
+
+✨ AUSSI
+• Les perturbations publiées par TCAT.
+• Toutes les lignes, y compris dimanche et transport à la demande.
+• Thème clair ou sombre, aux couleurs de votre fond d'écran.
+• Pas de compte, pas de publicité, pas de pisteur.
+
+Données : TCAT / Troyes Champagne Métropole sur transport.data.gouv.fr (ODbL). Carte : © les contributeurs d'OpenStreetMap.
+Application non officielle, sans lien avec TCAT ni Troyes Champagne Métropole.

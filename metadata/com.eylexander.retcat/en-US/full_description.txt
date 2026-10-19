@@ -1,0 +1,24 @@
+Where is my bus? Re-TCAT shows the buses of TCAT, the Troyes Champagne Métropole (France) network, in real time. The app is in French.
+
+🗺️ EVERY BUS ON THE MAP
+Each bus in service shows up with its line number and color, and an arrow pointing where it heads. Filter by line to see only yours and its route.
+
+🚌 FOLLOW A BUS
+Tap a bus: the map follows it as it drives, and the list of its stops shows the live predicted times, how late or early it runs, and skipped stops.
+
+🚏 YOUR STOPS
+• Search by name, or the stops around you.
+• The next buses at each stop, live when the bus is tracked, scheduled otherwise.
+• Favorite stops with their next three buses.
+
+📱 WIDGET
+The next buses at your stop on the home screen, with a refresh button.
+
+✨ ALSO
+• Service alerts published by TCAT.
+• Every line, Sunday and on-demand lines included.
+• Light or dark theme in your wallpaper's colors.
+• No account, no ads, no trackers.
+
+Data: TCAT / Troyes Champagne Métropole on transport.data.gouv.fr (ODbL). Map: © OpenStreetMap contributors.
+Unofficial app, not affiliated with TCAT or Troyes Champagne Métropole.
