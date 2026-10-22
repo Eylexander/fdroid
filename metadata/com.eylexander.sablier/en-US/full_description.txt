@@ -12,6 +12,6 @@ Every minute spent in an app comes back one period later: with "5 min per hour",
 A message warns you one minute before the end. Then the app is covered by a pause screen with a countdown until a minute is back. While paused, the rule can't be edited, switched off or deleted.
 
 🔒 PRIVACY
-Two permissions: usage access (to count the time) and an accessibility service (to see which app opens). The service never reads screen content. No account, no network, no ads: nothing leaves the phone.
+Three permissions: usage access (to count the time), an accessibility service (to see which app opens) and notification access (to set aside a paused app's notifications until the pause ends). Neither reads screen or notification content. No account, no network, no ads: nothing leaves the phone.
 
 The app's interface is in French.

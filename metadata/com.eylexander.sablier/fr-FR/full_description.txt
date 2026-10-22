@@ -12,4 +12,4 @@ Chaque minute passée dans une application revient une période plus tard : avec
 Un message vous prévient une minute avant la fin. Ensuite, l'application est couverte par un écran de pause avec le compte à rebours jusqu'au retour d'une minute. Pendant la pause, la règle ne peut être ni modifiée, ni désactivée, ni supprimée.
 
 🔒 VIE PRIVÉE
-Deux autorisations : l'accès aux données d'utilisation (pour compter le temps) et un service d'accessibilité (pour voir quelle application s'ouvre). Le service ne lit jamais le contenu de l'écran. Pas de compte, pas de réseau, pas de publicité : rien ne quitte le téléphone.
+Trois autorisations : l'accès aux données d'utilisation (pour compter le temps), un service d'accessibilité (pour voir quelle application s'ouvre) et l'accès aux notifications (pour mettre de côté celles d'une application en pause jusqu'à la fin de la pause). Aucun des deux ne lit le contenu de l'écran ni des notifications. Pas de compte, pas de réseau, pas de publicité : rien ne quitte le téléphone.
