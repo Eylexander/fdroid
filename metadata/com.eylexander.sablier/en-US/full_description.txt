@@ -1,0 +1,17 @@
+A daily limit isn't enough: you burn through it in one go in the morning. Sablier ("hourglass") limits your apps to a few minutes per hour. Enough to answer your messages, not to scroll forever.
+
+⏳ TIME COMES BACK LIKE SAND
+Every minute spent in an app comes back one period later: with "5 min per hour", a minute used at 2:10 pm is available again at 3:10 pm. No fixed reset time to game.
+
+📱 YOUR RULES
+• A group of apps sharing the same time (for example Instagram and its variants).
+• 1 to 120 minutes, per 30 min, per hour, every 3 hours or per day.
+• A timeline shows when you used them over the period.
+
+🛑 THE PAUSE
+A message warns you one minute before the end. Then the app is covered by a pause screen with a countdown until a minute is back. While paused, the rule can't be edited, switched off or deleted.
+
+🔒 PRIVACY
+Two permissions: usage access (to count the time) and an accessibility service (to see which app opens). The service never reads screen content. No account, no network, no ads: nothing leaves the phone.
+
+The app's interface is in French.

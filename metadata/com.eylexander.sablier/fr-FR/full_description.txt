@@ -1,0 +1,15 @@
+Une limite par jour ne suffit pas : on la grille d'un coup le matin. Sablier limite vos applications à quelques minutes par heure. Assez pour répondre à vos messages, pas pour défiler sans fin.
+
+⏳ LE TEMPS REVIENT COMME LE SABLE
+Chaque minute passée dans une application revient une période plus tard : avec « 5 min par heure », une minute utilisée à 14 h 10 est de nouveau disponible à 15 h 10. Pas de remise à zéro à heure fixe à exploiter.
+
+📱 VOS RÈGLES
+• Un groupe d'applications qui partagent le même temps (par exemple Instagram et ses variantes).
+• 1 à 120 minutes, par 30 min, par heure, toutes les 3 h ou par jour.
+• Une frise montre quand vous les avez utilisées sur la période.
+
+🛑 LA PAUSE
+Un message vous prévient une minute avant la fin. Ensuite, l'application est couverte par un écran de pause avec le compte à rebours jusqu'au retour d'une minute. Pendant la pause, la règle ne peut être ni modifiée, ni désactivée, ni supprimée.
+
+🔒 VIE PRIVÉE
+Deux autorisations : l'accès aux données d'utilisation (pour compter le temps) et un service d'accessibilité (pour voir quelle application s'ouvre). Le service ne lit jamais le contenu de l'écran. Pas de compte, pas de réseau, pas de publicité : rien ne quitte le téléphone.

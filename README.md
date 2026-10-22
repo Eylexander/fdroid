@@ -13,10 +13,11 @@ Personal F-Droid repository for my Android apps. Nothing is stored here but the 
 | Audio Cutter | `com.eylexander.audio_cutter` | [Eylexander/audio_player](https://github.com/Eylexander/audio_player) |
 | LLLearner | `com.eylexander.lllearner` | [Eylexander/lllearner](https://github.com/Eylexander/lllearner) |
 | Re-TCAT | `com.eylexander.retcat` | [Eylexander/re-tcat](https://github.com/Eylexander/re-tcat) |
+| Sablier | `com.eylexander.sablier` | [Eylexander/sablier](https://github.com/Eylexander/sablier) |
 
 ## Publishing an update
 
-Publish a GitHub release with the APK attached in the app's repository (for Audio Cutter, LLLearner and Re-TCAT: push a
+Publish a GitHub release with the APK attached in the app's repository (for every app here: push a
 `v*` tag). Nothing to do here: within 6 hours the scheduled run picks it up, or run "Publish F-Droid repo" from the
 Actions tab to publish it right away. Phones see the update after their next F-Droid refresh.
 

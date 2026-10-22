@@ -10,6 +10,8 @@ F-Droid (or Droid-ify / Neo Store). Hosted on GitHub Pages at `https://eylexande
   `Eylexander/lllearner`. Listing in `en-US` and `fr-FR`; keep its figures in sync with the app's README.
 - Re-TCAT (`com.eylexander.retcat`, live TCAT buses in Troyes): source `../re-tcat`, GitHub `Eylexander/re-tcat`.
   Listing in `en-US` and `fr-FR`. AntiFeature `NonFreeDep` (geolocator bundles the unused Play services client).
+- Sablier (`com.eylexander.sablier`, limits apps to a few minutes per hour): source `../sablier`, GitHub
+  `Eylexander/sablier`. Listing in `en-US` and `fr-FR`. Same release key as the others (`db171ead…`).
 
 All are Flutter apps, released by the same workflow and listed the same way:
 
