@@ -1,20 +1,13 @@
-Tu connais vraiment le monde ? Pangea est un jeu de géographie coloré pour te tester et apprendre en jouant, pays après pays.
+Un jeu de géographie pour voir ce que tu sais du monde, et apprendre le reste en route.
 
-🔮 PAYS MYSTÈRE
-Une silhouette par jour, la même pour tout le monde, et six essais. Chaque essai te dit à quelle distance tu es, dans quelle direction, et si c'est chaud ou froid. Entretiens ta série et partage ton résultat sans rien dévoiler.
+Chaque jour, un pays mystère : tu as sa silhouette et six essais, et chaque essai te dit à quelle distance tu es et dans quelle direction.
 
-🚩 DRAPEAUX, 🏛️ CAPITALES, 🧩 SILHOUETTES
-Des sprints de 60 secondes, quatre choix. Enchaîne les bonnes réponses pour un combo jusqu'à x5 ; une erreur coûte trois secondes. Les mauvaises réponses viennent de la même région : distinguer le Niger du Nigeria, c'est tout l'intérêt. À la fin, les pays à revoir, avec leur capitale.
+Il y a aussi les parties rapides. Drapeaux, capitales et silhouettes : 60 secondes, quatre choix, des combos quand tu enchaînes. Ce que tu as raté s'affiche à la fin avec sa capitale, et revient plus souvent jusqu'à ce que tu le saches. Épingle te demande de retrouver dix pays sur la carte. Road trip te donne deux pays, et tu nommes ceux qui les relient par la terre.
 
-📍 ÉPINGLE
-Dix pays à placer sur une carte vierge. En plein dedans, c'est 1000 points, puis moins plus ton épingle est loin. La carte file vers la réponse.
+L'Atlas, c'est la Terre entière (de vraies images de la NASA, Blue Marble) avec une fiche par pays : capitale, population, superficie. Les pays que tu as trouvés se colorent.
 
-🧭 ATLAS
-La carte du monde à explorer, avec une fiche pour chaque pays : drapeau, capitale, population, superficie. Les pays trouvés dans n'importe quel jeu se colorent.
+Tu peux te limiter à un continent, et choisir Facile, Normal ou Difficile. Facile reste sur les pays que tout le monde connaît, Difficile ajoute les petites îles et les micro-États.
 
-🎯 APPREND AVEC TOI
-Chaque jeu se joue sur le monde entier ou sur un continent. Les pays ratés reviennent plus souvent jusqu'à ce que tu les trouves.
+197 pays : les membres de l'ONU plus le Vatican, la Palestine, le Kosovo et Taïwan. En français ou en anglais. Fonctionne hors ligne, sans pub, sans compte, sans pistage.
 
-197 pays : les membres de l'ONU plus le Vatican, la Palestine, le Kosovo et Taïwan. En français ou en anglais, selon la langue du téléphone. Thèmes clair et sombre. Pas de compte, pas de réseau, pas de pub.
-
-Frontières issues de Natural Earth (domaine public).
+Frontières de Natural Earth, images de la Terre de la NASA, toutes deux dans le domaine public.

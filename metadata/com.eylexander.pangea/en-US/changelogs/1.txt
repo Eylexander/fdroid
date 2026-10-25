@@ -1,0 +1,1 @@
+First version. Flags, capitals, outlines, pin it, a daily mystery country and an atlas to explore. 197 countries, works offline.

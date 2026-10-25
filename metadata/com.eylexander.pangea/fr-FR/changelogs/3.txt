@@ -1,0 +1,5 @@
+Nouveau jeu, Road trip : relie deux pays en nommant ceux qui sont entre les deux.
+Facile, Normal et Difficile. Les petites îles, c'est en Difficile.
+La carte montre maintenant la vraie Terre (NASA Blue Marble).
+Une page de réglages, enfin : difficulté, langue, thème, tes stats.
+Corrigé le bouton Partie libre en mode sombre, il était blanc sur blanc.

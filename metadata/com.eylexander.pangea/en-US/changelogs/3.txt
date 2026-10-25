@@ -1,0 +1,5 @@
+New game, Road trip: connect two countries by naming the ones in between.
+Easy, Normal and Hard. Hard is where the tiny islands are.
+The map now shows the actual Earth (NASA Blue Marble).
+There's a settings page now: difficulty, language, theme, your stats.
+Fixed the Free play button in dark mode, it was white on white.

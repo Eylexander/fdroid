@@ -1,20 +1,13 @@
-How well do you know the world? Pangea is a colorful geography game to test yourself and learn as you play, country after country.
+A geography game to test what you know about the world, and learn the rest along the way.
 
-🔮 MYSTERY COUNTRY
-One outline a day, the same for everyone, and six guesses. Each guess tells you how far you are, in which direction, and how warm. Keep your streak going and share your result without spoiling it.
+Every day there's a mystery country: you get its outline and six guesses, and each guess tells you how far off you are and in which direction.
 
-🚩 FLAGS, 🏛️ CAPITALS, 🧩 SHAPES
-60-second rushes with four choices. Chain right answers for a combo up to x5; a miss costs three seconds. Wrong options come from the same region: telling Niger from Nigeria is the point. At the end, the countries to review, with their capital.
+Then there are the quick games. Flags, capitals and outlines: 60 seconds, four choices, combos when you chain right answers. Whatever you got wrong shows up at the end with its capital, and comes back more often until you know it. Pin it asks you to find ten countries on the map. Road trip gives you two countries and you name the ones in between to connect them by land.
 
-📍 PIN IT
-Ten countries to place on a blank map. Spot on is 1000 points, then fewer the farther your pin. The map flies to the answer.
+The Atlas is the whole Earth (real imagery from NASA's Blue Marble) with a card for each country: capital, population, area. The countries you've found get colored in.
 
-🧭 ATLAS
-The world map to explore, with a card for every country: flag, capital, population, area. Countries you have found in any game light up in color.
+You can stick to one continent, and pick Easy, Normal or Hard. Easy keeps to the countries most people know, Hard throws in the tiny islands and microstates.
 
-🎯 LEARNS WITH YOU
-Every game can be played on the whole world or one continent. Countries you miss come back more often until you get them right.
+197 countries: the UN members plus Vatican, Palestine, Kosovo and Taiwan. English or French. Works offline, no ads, no account, no tracking.
 
-197 countries: the UN members plus Vatican, Palestine, Kosovo and Taiwan. In English or French, following the phone's language. Light and dark themes. No account, no network, no ads.
-
-Borders from Natural Earth (public domain).
+Borders from Natural Earth, Earth imagery from NASA, both public domain.
