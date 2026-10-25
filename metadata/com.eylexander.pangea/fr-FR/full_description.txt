@@ -2,7 +2,7 @@ Un jeu de géographie pour voir ce que tu sais du monde, et apprendre le reste e
 
 Chaque jour, un pays mystère : tu as sa silhouette et six essais, et chaque essai te dit à quelle distance tu es et dans quelle direction.
 
-Il y a aussi les parties rapides. Drapeaux, capitales et silhouettes : 60 secondes, quatre choix, des combos quand tu enchaînes. Ce que tu as raté s'affiche à la fin avec sa capitale, et revient plus souvent jusqu'à ce que tu le saches. Épingle te demande de retrouver dix pays sur la carte. Gros plan commence tout près d'un bout de frontière puis dézoome : plus tu le reconnais tôt, plus tu marques. Plus ou moins te demande si le pays suivant a plus d'habitants, ou est plus grand, que le précédent.
+Il y a aussi les parties rapides. Drapeaux, capitales et silhouettes : 60 secondes, quatre choix, des combos quand tu enchaînes. Ce que tu as raté s'affiche à la fin avec sa capitale, et revient plus souvent jusqu'à ce que tu le saches. Épingle te demande de retrouver dix pays sur un globe vierge. Gros plan commence tout près d'un bout de frontière puis dézoome : plus tu le reconnais tôt, plus tu marques. Plus ou moins te demande si le pays suivant a plus d'habitants, ou est plus grand, que le précédent.
 
 Certains jeux se jouent sur un globe que tu fais tourner. Dans Road trip, tu ne vois que deux pays et tu nommes ceux qui les relient par la terre ; chaque pays nommé apparaît sur le globe. Dans Voisins, un pays, et tu nommes tous ceux qui le touchent.
 

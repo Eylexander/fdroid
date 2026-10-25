@@ -1,0 +1,4 @@
+Épingle se joue maintenant sur le globe.
+Road trip et Voisins restent plus près : une erreur lointaine ne fait dézoomer qu'une fois.
+Plus ou moins montre clairement si on parle d'habitants ou de superficie.
+Gros plan ne survole plus la carte jusqu'au pays suivant avant le début de la manche.
