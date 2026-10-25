@@ -12,6 +12,7 @@ Personal F-Droid repository for my Android apps. Nothing is stored here but the 
 | --- | --- | --- |
 | Audio Cutter | `com.eylexander.audio_cutter` | [Eylexander/audio_player](https://github.com/Eylexander/audio_player) |
 | LLLearner | `com.eylexander.lllearner` | [Eylexander/lllearner](https://github.com/Eylexander/lllearner) |
+| Pangea | `com.eylexander.pangea` | [Eylexander/pangea](https://github.com/Eylexander/pangea) |
 | Re-TCAT | `com.eylexander.retcat` | [Eylexander/re-tcat](https://github.com/Eylexander/re-tcat) |
 | Sablier | `com.eylexander.sablier` | [Eylexander/sablier](https://github.com/Eylexander/sablier) |
 

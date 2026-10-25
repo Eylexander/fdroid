@@ -8,6 +8,8 @@ F-Droid (or Droid-ify / Neo Store). Hosted on GitHub Pages at `https://eylexande
   `en-US`.
 - LLLearner (`com.eylexander.lllearner`, Taiwan Mandarin for French speakers): source `../lllearner`, GitHub
   `Eylexander/lllearner`. Listing in `en-US` and `fr-FR`; keep its figures in sync with the app's README.
+- Pangea (`com.eylexander.pangea`, geography game): source `../pangea`, GitHub `Eylexander/pangea`. Listing in `en-US`
+  and `fr-FR`, category Games. Same release key (`db171ead…`). Added 2026-10-25 with v1.0.0.
 - Re-TCAT (`com.eylexander.retcat`, live TCAT buses in Troyes): source `../re-tcat`, GitHub `Eylexander/re-tcat`.
   Listing in `en-US` and `fr-FR`. AntiFeature `NonFreeDep` (geolocator bundles the unused Play services client).
 - Sablier (`com.eylexander.sablier`, limits apps to a few minutes per hour): source `../sablier`, GitHub
