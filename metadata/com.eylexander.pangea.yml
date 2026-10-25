@@ -3,4 +3,8 @@ Categories:
 AuthorName: Eylexander
 SourceCode: https://github.com/Eylexander/pangea
 
+# fdroid update shows changelogs/<versionCode>.txt as "What's new" only for this version: bump both on each release.
+CurrentVersion: 1.2.0
+CurrentVersionCode: 3
+
 # Title, descriptions and icon: metadata/com.eylexander.pangea/{en-US,fr-FR}/ (fastlane names).
