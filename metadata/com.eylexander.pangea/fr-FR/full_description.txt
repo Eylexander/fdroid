@@ -2,12 +2,14 @@ Un jeu de géographie pour voir ce que tu sais du monde, et apprendre le reste e
 
 Chaque jour, un pays mystère : tu as sa silhouette et six essais, et chaque essai te dit à quelle distance tu es et dans quelle direction.
 
-Il y a aussi les parties rapides. Drapeaux, capitales et silhouettes : 60 secondes, quatre choix, des combos quand tu enchaînes. Ce que tu as raté s'affiche à la fin avec sa capitale, et revient plus souvent jusqu'à ce que tu le saches. Épingle te demande de retrouver dix pays sur la carte. Road trip te donne deux pays, et tu nommes ceux qui les relient par la terre.
+Il y a aussi les parties rapides. Drapeaux, capitales et silhouettes : 60 secondes, quatre choix, des combos quand tu enchaînes. Ce que tu as raté s'affiche à la fin avec sa capitale, et revient plus souvent jusqu'à ce que tu le saches. Épingle te demande de retrouver dix pays sur la carte. Gros plan commence tout près d'un bout de frontière puis dézoome : plus tu le reconnais tôt, plus tu marques. Plus ou moins te demande si le pays suivant a plus d'habitants, ou est plus grand, que le précédent.
 
-L'Atlas, c'est la Terre entière (de vraies images de la NASA, Blue Marble) avec une fiche par pays : capitale, population, superficie. Les pays que tu as trouvés se colorent.
+Certains jeux se jouent sur un globe que tu fais tourner. Dans Road trip, tu ne vois que deux pays et tu nommes ceux qui les relient par la terre ; chaque pays nommé apparaît sur le globe. Dans Voisins, un pays, et tu nommes tous ceux qui le touchent.
+
+L'Atlas, c'est un globe avec une fiche par pays : capitale, population, superficie. Les pays que tu as trouvés se colorent.
 
 Tu peux te limiter à un continent, et choisir Facile, Normal ou Difficile. Facile reste sur les pays que tout le monde connaît, Difficile ajoute les petites îles et les micro-États.
 
 197 pays : les membres de l'ONU plus le Vatican, la Palestine, le Kosovo et Taïwan. En français ou en anglais. Fonctionne hors ligne, sans pub, sans compte, sans pistage.
 
-Frontières de Natural Earth, images de la Terre de la NASA, toutes deux dans le domaine public.
+Frontières de Natural Earth (domaine public).

@@ -2,12 +2,14 @@ A geography game to test what you know about the world, and learn the rest along
 
 Every day there's a mystery country: you get its outline and six guesses, and each guess tells you how far off you are and in which direction.
 
-Then there are the quick games. Flags, capitals and outlines: 60 seconds, four choices, combos when you chain right answers. Whatever you got wrong shows up at the end with its capital, and comes back more often until you know it. Pin it asks you to find ten countries on the map. Road trip gives you two countries and you name the ones in between to connect them by land.
+Then there are the quick games. Flags, capitals and outlines: 60 seconds, four choices, combos when you chain right answers. Whatever you got wrong shows up at the end with its capital, and comes back more often until you know it. Pin it asks you to find ten countries on the map. Close-up starts zoomed right in on a bit of border and pulls back: the sooner you know it, the more points. Higher or lower asks whether the next country has more people, or is bigger, than the last one.
 
-The Atlas is the whole Earth (real imagery from NASA's Blue Marble) with a card for each country: capital, population, area. The countries you've found get colored in.
+Some games are played on a globe you can spin. In Road trip you only see two countries, and you name the ones in between to connect them by land; every country you name shows up on the globe. In Neighbors you get one country and name everything it borders.
+
+The Atlas is a globe with a card for each country: capital, population, area. The countries you've found get colored in.
 
 You can stick to one continent, and pick Easy, Normal or Hard. Easy keeps to the countries most people know, Hard throws in the tiny islands and microstates.
 
 197 countries: the UN members plus Vatican, Palestine, Kosovo and Taiwan. English or French. Works offline, no ads, no account, no tracking.
 
-Borders from Natural Earth, Earth imagery from NASA, both public domain.
+Borders from Natural Earth (public domain).
