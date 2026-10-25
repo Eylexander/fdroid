@@ -84,6 +84,11 @@ Publishing an update is done in the app's repository (push a `v*` tag; its workf
   `SHA ?256:` to handle both.
 - Text files are forced to LF in `.gitattributes` so the scripts run in CI.
 - If a release has several APKs, `fetch-releases.sh` takes the one with `arm64` in its name, else the first.
+- Changelogs (`metadata/<package>/<locale>/changelogs/<versionCode>.txt`) don't reach the v2 index here: fdroidserver
+  2.4 only attaches "What's new" to versions through `Builds:` entries, which this binary-only repo doesn't have, and
+  matches the files against `CurrentVersionCode`, which it only fills in after reading them. Don't set
+  `CurrentVersionCode` by hand to work around it: a release that forgets to bump it gets marked Beta, and phones
+  without beta updates never get it. Pangea keeps its changelog files as history; its release notes are on GitHub.
 - `fdroid update` can't extract a PNG from a vector-only launcher icon (both apps), so the landing page's app card
   uses the metadata icon (`repo/<id>/en-US/icon*.png`, copied there by `fdroid update`) before the APK's.
 
