@@ -1,0 +1,2 @@
+Voisins ne semble plus dézoomer quand on tape : le clavier rétrécissait le globe.
+Gros plan commence un peu plus loin, là où les frontières sont vraiment détaillées, et garde la frontière en vue en dézoomant au lieu de ne montrer que la couleur du pays.

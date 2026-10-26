@@ -1,0 +1,2 @@
+Neighbors no longer seems to zoom out when you type: the keyboard used to shrink the globe.
+Close-up starts a little further out, where the borders are actually detailed, and keeps the border in view while zooming out instead of showing only the country's color.
